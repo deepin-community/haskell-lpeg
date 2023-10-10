@@ -1,4 +1,11 @@
 #!/usr/bin/make -f
 
-%:
-	dh $@
+DEB_ENABLE_TESTS = yes
+DEB_SETUP_BIN_NAME = debian/hlibrary.setup
+DEB_CABAL_PACKAGE = lpeg
+DEB_DEFAULT_COMPILER = ghc
+DEB_SETUP_GHC6_FLAGS = --haddock-option=–mathjax=file:///usr/share/javascript/mathjax/MathJax.js --haddock-option=–encoding=UTF-8
+DEB_SETUP_GHC6_HADDOCK_FLAGS = --optghc=-D__HADDOCK__ --optghc=-futf8-string
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/hlibrary.mk
